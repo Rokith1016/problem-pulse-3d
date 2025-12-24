@@ -1,13 +1,49 @@
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont,
+    "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  background: #0b0b0b;
+  color: #ffffff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* INPUTS */
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  backdrop-filter: blur(12px);
+  font-size: 15px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+/* BUTTONS */
+button {
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: none;
+  background: #ffffff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }

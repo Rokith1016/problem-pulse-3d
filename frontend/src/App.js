@@ -1,37 +1,56 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import MapDashboard from "./pages/MapDashboard";
+import ReportProblem from "./pages/ReportProblem";
+import ProtectedRoute from "./ProtectedRoute";
+import Chatbot from "./components/Chatbot";
+
 function App() {
   return (
-    <div style={{
-      minHeight: "100vh",
-      background: "linear-gradient(135deg, #000000, #1f2937)",
-      color: "white",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    }}>
-      <div style={{ textAlign: "center" }}>
-        
-        <h1 style={{ fontSize: "42px", marginBottom: "10px" }}>
-          ProblemPulse 3D
-        </h1>
+    <Router>
+      <Routes>
+        {/* Default redirect */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
 
-        <p style={{ color: "#9ca3af", marginBottom: "25px" }}>
-          Report and visualize local problems on a 3D map
-        </p>
+        {/* Public routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-        <button style={{
-          padding: "12px 24px",
-          backgroundColor: "#2563eb",
-          border: "none",
-          borderRadius: "10px",
-          color: "white",
-          fontSize: "16px",
-          cursor: "pointer"
-        }}>
-          View Map
-        </button>
+        {/* Protected routes */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
 
-      </div>
-    </div>
+        <Route
+          path="/map"
+          element={
+            <ProtectedRoute>
+              <MapDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/report"
+          element={
+            <ProtectedRoute>
+              <ReportProblem />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+
+      {/* 🤖 Floating Chatbot (GLOBAL) */}
+      <Chatbot />
+    </Router>
   );
 }
 
